@@ -36,7 +36,7 @@ server.get("/api/pizzas", (req, res) => {
       const sizes = pizzas
         .filter((pizza) => pizza.pizza_type_id === pizzaType.pizza_type_id)
         .reduce((acc, pizza) => {
-          acc[pizza.size] = parseFloat(pizza.price); // Converte para número
+          acc[pizza.size] = parseFloat(pizza.price);
           return acc;
         }, {});
       return {
@@ -132,7 +132,7 @@ server.get("/api/orders/:orderId", (req, res) => {
 // Inicializar o servidor
 const start = async () => {
   try {
-    await server.listen({ port: PORT });
+    await server.listen({ port: PORT, host: '0.0.0.0' }); // <- Isso é crucial para a Railway
     console.log(`✅ Servidor rodando em http://localhost:${PORT}`);
     console.log(`📂 Imagens disponíveis em http://localhost:${PORT}/public/`);
   } catch (err) {
