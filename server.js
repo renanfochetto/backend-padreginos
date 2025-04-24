@@ -2,8 +2,7 @@ import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import path from "path";
 import { fileURLToPath } from "url";
-import sqlite3 from "sqlite3"; // Substituímos better-sqlite3 por sqlite3
-import fs from "fs"; // Para verificar se o banco existe
+import fs from "fs"; // Para carregar os arquivos JSON
 
 const server = fastify({
   logger: {
@@ -18,22 +17,11 @@ const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Verificar se o arquivo do banco de dados existe
-const dbPath = path.join(__dirname, "pizza.sqlite");
-if (!fs.existsSync(dbPath)) {
-  console.error("Erro: O arquivo 'pizza.sqlite' não foi encontrado.");
-  process.exit(1);
-}
-
-// Inicializar o banco de dados
-const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
-  if (err) {
-    console.error("Erro ao conectar ao banco de dados SQLite:", err.message);
-    process.exit(1);
-  } else {
-    console.log("Conectado ao banco de dados SQLite.");
-  }
-});
+// Carregar os dados dos arquivos JSON
+const pizzaTypes = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "pizza_types.json")));
+const pizzas = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "pizzas.json")));
+const orders = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "orders.json")));
+const orderDetails = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "order_details.json")));
 
 // Registrar arquivos estáticos
 server.register(fastifyStatic, {
@@ -43,99 +31,102 @@ server.register(fastifyStatic, {
 
 // Endpoint: Obter todas as pizzas
 server.get("/api/pizzas", (req, res) => {
-  const pizzasQuery = `
-    SELECT pizza_type_id, name, category, ingredients AS description
-    FROM pizza_types
-  `;
-  const pizzaSizesQuery = `
-    SELECT pizza_type_id AS id, size, price
-    FROM pizzas
-  `;
-
-  db.all(pizzasQuery, [], (err, pizzas) => {
-    if (err) {
-      console.error("Erro ao buscar pizzas:", err.message);
-      res.status(500).send({ error: "Erro ao buscar as pizzas." });
-      return;
-    }
-
-    db.all(pizzaSizesQuery, [], (err, pizzaSizes) => {
-      if (err) {
-        console.error("Erro ao buscar tamanhos:", err.message);
-        res.status(500).send({ error: "Erro ao buscar tamanhos." });
-        return;
-      }
-
-      const responsePizzas = pizzas.map((pizza) => {
-        const sizes = pizzaSizes.reduce((acc, current) => {
-          if (current.id === pizza.pizza_type_id) {
-            acc[current.size] = +current.price;
-          }
+  try {
+    const responsePizzas = pizzaTypes.map((pizzaType) => {
+      const sizes = pizzas
+        .filter((pizza) => pizza.pizza_type_id === pizzaType.pizza_type_id)
+        .reduce((acc, pizza) => {
+          acc[pizza.size] = parseFloat(pizza.price); // Converte para número
           return acc;
         }, {});
-        return {
-          id: pizza.pizza_type_id,
-          name: pizza.name,
-          category: pizza.category,
-          description: pizza.description,
-          image: `/public/pizzas/${pizza.pizza_type_id}.webp`,
-          sizes,
-        };
-      });
-
-      res.send(responsePizzas);
+      return {
+        id: pizzaType.pizza_type_id,
+        name: pizzaType.name,
+        category: pizzaType.category,
+        description: pizzaType.ingredients,
+        image: `/public/pizzas/${pizzaType.pizza_type_id}.webp`,
+        sizes,
+      };
     });
-  });
+
+    res.send(responsePizzas);
+  } catch (error) {
+    req.log.error(error);
+    res.status(500).send({ error: "Erro ao buscar as pizzas." });
+  }
 });
 
 // Endpoint: Pizza do dia
 server.get("/api/pizza-of-the-day", (req, res) => {
-  const pizzasQuery = `
-    SELECT pizza_type_id AS id, name, category, ingredients AS description
-    FROM pizza_types
-  `;
-
-  db.all(pizzasQuery, [], (err, pizzas) => {
-    if (err) {
-      console.error("Erro ao buscar pizzas:", err.message);
-      res.status(500).send({ error: "Erro ao buscar a pizza do dia." });
-      return;
-    }
-
+  try {
     const daysSinceEpoch = Math.floor(Date.now() / 86400000);
-    const pizzaIndex = daysSinceEpoch % pizzas.length;
-    const pizza = pizzas[pizzaIndex];
-
-    const sizesQuery = `
-      SELECT size, price
-      FROM pizzas
-      WHERE pizza_type_id = ?
-    `;
-
-    db.all(sizesQuery, [pizza.id], (err, sizes) => {
-      if (err) {
-        console.error("Erro ao buscar tamanhos da pizza do dia:", err.message);
-        res.status(500).send({ error: "Erro ao buscar tamanhos da pizza do dia." });
-        return;
-      }
-
-      const sizeObj = sizes.reduce((acc, current) => {
-        acc[current.size] = +current.price;
+    const pizzaIndex = daysSinceEpoch % pizzaTypes.length;
+    const pizza = pizzaTypes[pizzaIndex];
+    const sizes = pizzas
+      .filter((p) => p.pizza_type_id === pizza.pizza_type_id)
+      .reduce((acc, p) => {
+        acc[p.size] = parseFloat(p.price);
         return acc;
       }, {});
 
-      const responsePizza = {
-        id: pizza.id,
-        name: pizza.name,
-        category: pizza.category,
-        description: pizza.description,
-        image: `/public/pizzas/${pizza.id}.webp`,
-        sizes: sizeObj,
-      };
+    const responsePizza = {
+      id: pizza.pizza_type_id,
+      name: pizza.name,
+      category: pizza.category,
+      description: pizza.ingredients,
+      image: `/public/pizzas/${pizza.pizza_type_id}.webp`,
+      sizes,
+    };
 
-      res.send(responsePizza);
-    });
-  });
+    res.send(responsePizza);
+  } catch (error) {
+    req.log.error(error);
+    res.status(500).send({ error: "Erro ao buscar a pizza do dia." });
+  }
+});
+
+// Endpoint: Obter pedidos
+server.get("/api/orders", (req, res) => {
+  try {
+    res.send(orders);
+  } catch (error) {
+    req.log.error(error);
+    res.status(500).send({ error: "Erro ao buscar pedidos." });
+  }
+});
+
+// Endpoint: Obter detalhes de um pedido
+server.get("/api/orders/:orderId", (req, res) => {
+  try {
+    const orderId = parseInt(req.params.orderId, 10);
+    const order = orders.find((o) => o.order_id === orderId);
+
+    if (!order) {
+      res.status(404).send({ error: "Pedido não encontrado." });
+      return;
+    }
+
+    const details = orderDetails
+      .filter((detail) => detail.order_id === orderId)
+      .map((detail) => {
+        const pizza = pizzas.find((p) => p.pizza_id === detail.pizza_id);
+        const type = pizzaTypes.find((t) => t.pizza_type_id === pizza.pizza_type_id);
+        return {
+          quantity: detail.quantity,
+          pizza: {
+            id: pizza.pizza_id,
+            name: type.name,
+            size: pizza.size,
+            price: parseFloat(pizza.price),
+          },
+        };
+      });
+
+    res.send({ order, details });
+  } catch (error) {
+    req.log.error(error);
+    res.status(500).send({ error: "Erro ao buscar detalhes do pedido." });
+  }
 });
 
 // Inicializar o servidor

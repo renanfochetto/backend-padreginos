@@ -1,0 +1,194 @@
+[
+  {
+    "pizza_type_id": "bbq_ckn",
+    "name": "The Barbecue Chicken Pizza",
+    "category": "Chicken",
+    "ingredients": "Barbecued Chicken, Red Peppers, Green Peppers, Tomatoes, Red Onions, Barbecue Sauce"
+  },
+  {
+    "pizza_type_id": "cali_ckn",
+    "name": "The California Chicken Pizza",
+    "category": "Chicken",
+    "ingredients": "Chicken, Artichoke, Spinach, Garlic, Jalapeno Peppers, Fontina Cheese, Gouda Cheese"
+  },
+  {
+    "pizza_type_id": "ckn_alfredo",
+    "name": "The Chicken Alfredo Pizza",
+    "category": "Chicken",
+    "ingredients": "Chicken, Red Onions, Red Peppers, Mushrooms, Asiago Cheese, Alfredo Sauce"
+  },
+  {
+    "pizza_type_id": "ckn_pesto",
+    "name": "The Chicken Pesto Pizza",
+    "category": "Chicken",
+    "ingredients": "Chicken, Tomatoes, Red Peppers, Spinach, Garlic, Pesto Sauce"
+  },
+  {
+    "pizza_type_id": "southw_ckn",
+    "name": "The Southwest Chicken Pizza",
+    "category": "Chicken",
+    "ingredients": "Chicken, Tomatoes, Red Peppers, Red Onions, Jalapeno Peppers, Corn, Cilantro, Chipotle Sauce"
+  },
+  {
+    "pizza_type_id": "thai_ckn",
+    "name": "The Thai Chicken Pizza",
+    "category": "Chicken",
+    "ingredients": "Chicken, Pineapple, Tomatoes, Red Peppers, Thai Sweet Chilli Sauce"
+  },
+  {
+    "pizza_type_id": "big_meat",
+    "name": "The Big Meat Pizza",
+    "category": "Classic",
+    "ingredients": "Bacon, Pepperoni, Italian Sausage, Chorizo Sausage"
+  },
+  {
+    "pizza_type_id": "classic_dlx",
+    "name": "The Classic Deluxe Pizza",
+    "category": "Classic",
+    "ingredients": "Pepperoni, Mushrooms, Red Onions, Red Peppers, Bacon"
+  },
+  {
+    "pizza_type_id": "hawaiian",
+    "name": "The Hawaiian Pizza",
+    "category": "Classic",
+    "ingredients": "Sliced Ham, Pineapple, Mozzarella Cheese"
+  },
+  {
+    "pizza_type_id": "ital_cpcllo",
+    "name": "The Italian Capocollo Pizza",
+    "category": "Classic",
+    "ingredients": "Capocollo, Red Peppers, Tomatoes, Goat Cheese, Garlic, Oregano"
+  },
+  {
+    "pizza_type_id": "napolitana",
+    "name": "The Napolitana Pizza",
+    "category": "Classic",
+    "ingredients": "Tomatoes, Anchovies, Green Olives, Red Onions, Garlic"
+  },
+  {
+    "pizza_type_id": "pep_msh_pep",
+    "name": "The Pepperoni, Mushroom, and Peppers Pizza",
+    "category": "Classic",
+    "ingredients": "Pepperoni, Mushrooms, Green Peppers"
+  },
+  {
+    "pizza_type_id": "pepperoni",
+    "name": "The Pepperoni Pizza",
+    "category": "Classic",
+    "ingredients": "Mozzarella Cheese, Pepperoni"
+  },
+  {
+    "pizza_type_id": "the_greek",
+    "name": "The Greek Pizza",
+    "category": "Classic",
+    "ingredients": "Kalamata Olives, Feta Cheese, Tomatoes, Garlic, Beef Chuck Roast, Red Onions"
+  },
+  {
+    "pizza_type_id": "brie_carre",
+    "name": "The Brie Carre Pizza",
+    "category": "Supreme",
+    "ingredients": "Brie Carre Cheese, Prosciutto, Caramelized Onions, Pears, Thyme, Garlic"
+  },
+  {
+    "pizza_type_id": "calabrese",
+    "name": "The Calabrese Pizza",
+    "category": "Supreme",
+    "ingredients": "�Nduja Salami, Pancetta, Tomatoes, Red Onions, Friggitello Peppers, Garlic"
+  },
+  {
+    "pizza_type_id": "ital_supr",
+    "name": "The Italian Supreme Pizza",
+    "category": "Supreme",
+    "ingredients": "Calabrese Salami, Capocollo, Tomatoes, Red Onions, Green Olives, Garlic"
+  },
+  {
+    "pizza_type_id": "peppr_salami",
+    "name": "The Pepper Salami Pizza",
+    "category": "Supreme",
+    "ingredients": "Genoa Salami, Capocollo, Pepperoni, Tomatoes, Asiago Cheese, Garlic"
+  },
+  {
+    "pizza_type_id": "prsc_argla",
+    "name": "The Prosciutto and Arugula Pizza",
+    "category": "Supreme",
+    "ingredients": "Prosciutto di San Daniele, Arugula, Mozzarella Cheese"
+  },
+  {
+    "pizza_type_id": "sicilian",
+    "name": "The Sicilian Pizza",
+    "category": "Supreme",
+    "ingredients": "Coarse Sicilian Salami, Tomatoes, Green Olives, Luganega Sausage, Onions, Garlic"
+  },
+  {
+    "pizza_type_id": "soppressata",
+    "name": "The Soppressata Pizza",
+    "category": "Supreme",
+    "ingredients": "Soppressata Salami, Fontina Cheese, Mozzarella Cheese, Mushrooms, Garlic"
+  },
+  {
+    "pizza_type_id": "spicy_ital",
+    "name": "The Spicy Italian Pizza",
+    "category": "Supreme",
+    "ingredients": "Capocollo, Tomatoes, Goat Cheese, Artichokes, Peperoncini verdi, Garlic"
+  },
+  {
+    "pizza_type_id": "spinach_supr",
+    "name": "The Spinach Supreme Pizza",
+    "category": "Supreme",
+    "ingredients": "Spinach, Red Onions, Pepperoni, Tomatoes, Artichokes, Kalamata Olives, Garlic, Asiago Cheese"
+  },
+  {
+    "pizza_type_id": "five_cheese",
+    "name": "The Five Cheese Pizza",
+    "category": "Veggie",
+    "ingredients": "Mozzarella Cheese, Provolone Cheese, Smoked Gouda Cheese, Romano Cheese, Blue Cheese, Garlic"
+  },
+  {
+    "pizza_type_id": "four_cheese",
+    "name": "The Four Cheese Pizza",
+    "category": "Veggie",
+    "ingredients": "Ricotta Cheese, Gorgonzola Piccante Cheese, Mozzarella Cheese, Parmigiano Reggiano Cheese, Garlic"
+  },
+  {
+    "pizza_type_id": "green_garden",
+    "name": "The Green Garden Pizza",
+    "category": "Veggie",
+    "ingredients": "Spinach, Mushrooms, Tomatoes, Green Olives, Feta Cheese"
+  },
+  {
+    "pizza_type_id": "ital_veggie",
+    "name": "The Italian Vegetables Pizza",
+    "category": "Veggie",
+    "ingredients": "Eggplant, Artichokes, Tomatoes, Zucchini, Red Peppers, Garlic, Pesto Sauce"
+  },
+  {
+    "pizza_type_id": "mediterraneo",
+    "name": "The Mediterranean Pizza",
+    "category": "Veggie",
+    "ingredients": "Spinach, Artichokes, Kalamata Olives, Sun-dried Tomatoes, Feta Cheese, Plum Tomatoes, Red Onions"
+  },
+  {
+    "pizza_type_id": "mexicana",
+    "name": "The Mexicana Pizza",
+    "category": "Veggie",
+    "ingredients": "Tomatoes, Red Peppers, Jalapeno Peppers, Red Onions, Cilantro, Corn, Chipotle Sauce, Garlic"
+  },
+  {
+    "pizza_type_id": "spin_pesto",
+    "name": "The Spinach Pesto Pizza",
+    "category": "Veggie",
+    "ingredients": "Spinach, Artichokes, Tomatoes, Sun-dried Tomatoes, Garlic, Pesto Sauce"
+  },
+  {
+    "pizza_type_id": "spinach_fet",
+    "name": "The Spinach and Feta Pizza",
+    "category": "Veggie",
+    "ingredients": "Spinach, Mushrooms, Red Onions, Feta Cheese, Garlic"
+  },
+  {
+    "pizza_type_id": "veggie_veg",
+    "name": "The Vegetables + Vegetables Pizza",
+    "category": "Veggie",
+    "ingredients": "Mushrooms, Tomatoes, Red Peppers, Green Peppers, Red Onions, Zucchini, Spinach, Garlic"
+  }
+]

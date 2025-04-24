@@ -1,0 +1,578 @@
+[
+  {
+    "pizza_id": "bbq_ckn_s",
+    "pizza_type_id": "bbq_ckn",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "bbq_ckn_m",
+    "pizza_type_id": "bbq_ckn",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "bbq_ckn_l",
+    "pizza_type_id": "bbq_ckn",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "cali_ckn_s",
+    "pizza_type_id": "cali_ckn",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "cali_ckn_m",
+    "pizza_type_id": "cali_ckn",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "cali_ckn_l",
+    "pizza_type_id": "cali_ckn",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "ckn_alfredo_s",
+    "pizza_type_id": "ckn_alfredo",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "ckn_alfredo_m",
+    "pizza_type_id": "ckn_alfredo",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "ckn_alfredo_l",
+    "pizza_type_id": "ckn_alfredo",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "ckn_pesto_s",
+    "pizza_type_id": "ckn_pesto",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "ckn_pesto_m",
+    "pizza_type_id": "ckn_pesto",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "ckn_pesto_l",
+    "pizza_type_id": "ckn_pesto",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "southw_ckn_s",
+    "pizza_type_id": "southw_ckn",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "southw_ckn_m",
+    "pizza_type_id": "southw_ckn",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "southw_ckn_l",
+    "pizza_type_id": "southw_ckn",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "thai_ckn_s",
+    "pizza_type_id": "thai_ckn",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "thai_ckn_m",
+    "pizza_type_id": "thai_ckn",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "thai_ckn_l",
+    "pizza_type_id": "thai_ckn",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "big_meat_s",
+    "pizza_type_id": "big_meat",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "big_meat_m",
+    "pizza_type_id": "big_meat",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "big_meat_l",
+    "pizza_type_id": "big_meat",
+    "size": "L",
+    "price": "20.5"
+  },
+  {
+    "pizza_id": "classic_dlx_s",
+    "pizza_type_id": "classic_dlx",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "classic_dlx_m",
+    "pizza_type_id": "classic_dlx",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "classic_dlx_l",
+    "pizza_type_id": "classic_dlx",
+    "size": "L",
+    "price": "20.5"
+  },
+  {
+    "pizza_id": "hawaiian_s",
+    "pizza_type_id": "hawaiian",
+    "size": "S",
+    "price": "10.5"
+  },
+  {
+    "pizza_id": "hawaiian_m",
+    "pizza_type_id": "hawaiian",
+    "size": "M",
+    "price": "13.25"
+  },
+  {
+    "pizza_id": "hawaiian_l",
+    "pizza_type_id": "hawaiian",
+    "size": "L",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "ital_cpcllo_s",
+    "pizza_type_id": "ital_cpcllo",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "ital_cpcllo_m",
+    "pizza_type_id": "ital_cpcllo",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "ital_cpcllo_l",
+    "pizza_type_id": "ital_cpcllo",
+    "size": "L",
+    "price": "20.5"
+  },
+  {
+    "pizza_id": "napolitana_s",
+    "pizza_type_id": "napolitana",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "napolitana_m",
+    "pizza_type_id": "napolitana",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "napolitana_l",
+    "pizza_type_id": "napolitana",
+    "size": "L",
+    "price": "20.5"
+  },
+  {
+    "pizza_id": "pep_msh_pep_s",
+    "pizza_type_id": "pep_msh_pep",
+    "size": "S",
+    "price": "11"
+  },
+  {
+    "pizza_id": "pep_msh_pep_m",
+    "pizza_type_id": "pep_msh_pep",
+    "size": "M",
+    "price": "14.5"
+  },
+  {
+    "pizza_id": "pep_msh_pep_l",
+    "pizza_type_id": "pep_msh_pep",
+    "size": "L",
+    "price": "17.5"
+  },
+  {
+    "pizza_id": "pepperoni_s",
+    "pizza_type_id": "pepperoni",
+    "size": "S",
+    "price": "9.75"
+  },
+  {
+    "pizza_id": "pepperoni_m",
+    "pizza_type_id": "pepperoni",
+    "size": "M",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "pepperoni_l",
+    "pizza_type_id": "pepperoni",
+    "size": "L",
+    "price": "15.25"
+  },
+  {
+    "pizza_id": "the_greek_s",
+    "pizza_type_id": "the_greek",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "the_greek_m",
+    "pizza_type_id": "the_greek",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "the_greek_l",
+    "pizza_type_id": "the_greek",
+    "size": "L",
+    "price": "20.5"
+  },
+  {
+    "pizza_id": "brie_carre_s",
+    "pizza_type_id": "brie_carre",
+    "size": "S",
+    "price": "23.65"
+  },
+  {
+    "pizza_id": "calabrese_s",
+    "pizza_type_id": "calabrese",
+    "size": "S",
+    "price": "12.25"
+  },
+  {
+    "pizza_id": "calabrese_m",
+    "pizza_type_id": "calabrese",
+    "size": "M",
+    "price": "16.25"
+  },
+  {
+    "pizza_id": "calabrese_l",
+    "pizza_type_id": "calabrese",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "ital_supr_s",
+    "pizza_type_id": "ital_supr",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "ital_supr_m",
+    "pizza_type_id": "ital_supr",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "ital_supr_l",
+    "pizza_type_id": "ital_supr",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "peppr_salami_s",
+    "pizza_type_id": "peppr_salami",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "peppr_salami_m",
+    "pizza_type_id": "peppr_salami",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "peppr_salami_l",
+    "pizza_type_id": "peppr_salami",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "prsc_argla_s",
+    "pizza_type_id": "prsc_argla",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "prsc_argla_m",
+    "pizza_type_id": "prsc_argla",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "prsc_argla_l",
+    "pizza_type_id": "prsc_argla",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "sicilian_s",
+    "pizza_type_id": "sicilian",
+    "size": "S",
+    "price": "12.25"
+  },
+  {
+    "pizza_id": "sicilian_m",
+    "pizza_type_id": "sicilian",
+    "size": "M",
+    "price": "16.25"
+  },
+  {
+    "pizza_id": "sicilian_l",
+    "pizza_type_id": "sicilian",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "soppressata_s",
+    "pizza_type_id": "soppressata",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "soppressata_m",
+    "pizza_type_id": "soppressata",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "soppressata_l",
+    "pizza_type_id": "soppressata",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "spicy_ital_s",
+    "pizza_type_id": "spicy_ital",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "spicy_ital_m",
+    "pizza_type_id": "spicy_ital",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "spicy_ital_l",
+    "pizza_type_id": "spicy_ital",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "spinach_supr_s",
+    "pizza_type_id": "spinach_supr",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "spinach_supr_m",
+    "pizza_type_id": "spinach_supr",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "spinach_supr_l",
+    "pizza_type_id": "spinach_supr",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "five_cheese_s",
+    "pizza_type_id": "five_cheese",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "five_cheese_m",
+    "pizza_type_id": "five_cheese",
+    "size": "M",
+    "price": "15.5"
+  },
+  {
+    "pizza_id": "five_cheese_l",
+    "pizza_type_id": "five_cheese",
+    "size": "L",
+    "price": "18.5"
+  },
+  {
+    "pizza_id": "four_cheese_s",
+    "pizza_type_id": "four_cheese",
+    "size": "S",
+    "price": "11.75"
+  },
+  {
+    "pizza_id": "four_cheese_m",
+    "pizza_type_id": "four_cheese",
+    "size": "M",
+    "price": "14.75"
+  },
+  {
+    "pizza_id": "four_cheese_l",
+    "pizza_type_id": "four_cheese",
+    "size": "L",
+    "price": "17.95"
+  },
+  {
+    "pizza_id": "green_garden_s",
+    "pizza_type_id": "green_garden",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "green_garden_m",
+    "pizza_type_id": "green_garden",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "green_garden_l",
+    "pizza_type_id": "green_garden",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "ital_veggie_s",
+    "pizza_type_id": "ital_veggie",
+    "size": "S",
+    "price": "12.75"
+  },
+  {
+    "pizza_id": "ital_veggie_m",
+    "pizza_type_id": "ital_veggie",
+    "size": "M",
+    "price": "16.75"
+  },
+  {
+    "pizza_id": "ital_veggie_l",
+    "pizza_type_id": "ital_veggie",
+    "size": "L",
+    "price": "21"
+  },
+  {
+    "pizza_id": "mediterraneo_s",
+    "pizza_type_id": "mediterraneo",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "mediterraneo_m",
+    "pizza_type_id": "mediterraneo",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "mediterraneo_l",
+    "pizza_type_id": "mediterraneo",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "mexicana_s",
+    "pizza_type_id": "mexicana",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "mexicana_m",
+    "pizza_type_id": "mexicana",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "mexicana_l",
+    "pizza_type_id": "mexicana",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "spin_pesto_s",
+    "pizza_type_id": "spin_pesto",
+    "size": "S",
+    "price": "12.5"
+  },
+  {
+    "pizza_id": "spin_pesto_m",
+    "pizza_type_id": "spin_pesto",
+    "size": "M",
+    "price": "16.5"
+  },
+  {
+    "pizza_id": "spin_pesto_l",
+    "pizza_type_id": "spin_pesto",
+    "size": "L",
+    "price": "20.75"
+  },
+  {
+    "pizza_id": "spinach_fet_s",
+    "pizza_type_id": "spinach_fet",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "spinach_fet_m",
+    "pizza_type_id": "spinach_fet",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "spinach_fet_l",
+    "pizza_type_id": "spinach_fet",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "veggie_veg_s",
+    "pizza_type_id": "veggie_veg",
+    "size": "S",
+    "price": "12"
+  },
+  {
+    "pizza_id": "veggie_veg_m",
+    "pizza_type_id": "veggie_veg",
+    "size": "M",
+    "price": "16"
+  },
+  {
+    "pizza_id": "veggie_veg_l",
+    "pizza_type_id": "veggie_veg",
+    "size": "L",
+    "price": "20.25"
+  },
+  {
+    "pizza_id": "brie_carre_m",
+    "pizza_type_id": "brie_carre",
+    "size": "M",
+    "price": "28.85"
+  },
+  {
+    "pizza_id": "brie_carre_l",
+    "pizza_type_id": "brie_carre",
+    "size": "L",
+    "price": "34.4"
+  }
+]
