@@ -40,13 +40,15 @@ server.register(fastifyStatic, {
 server.get("/api/pizzas", (req, res) => {
   try {
     const responsePizzas = pizzaTypes.map((pizzaType) => {
+      console.log("pizzaType:", pizzaType); // Log das propriedades de pizzaType
       const sizes = pizzas
         .filter((pizza) => pizza.pizza_type_id === pizzaType.pizza_type_id)
         .reduce((acc, pizza) => {
+          console.log("pizza:", pizza); // Log das propriedades de pizza
           acc[pizza.size] = parseFloat(pizza.price); // Converte para número
           return acc;
         }, {});
-      console.log(sizes);
+      console.log("sizes:", sizes); // Log do objeto sizes final
       return {
         id: pizzaType.pizza_type_id,
         name: pizzaType.name,
@@ -70,12 +72,15 @@ server.get("/api/pizza-of-the-day", (req, res) => {
     const daysSinceEpoch = Math.floor(Date.now() / 86400000);
     const pizzaIndex = daysSinceEpoch % pizzaTypes.length;
     const pizza = pizzaTypes[pizzaIndex];
+    console.log("Pizza do Dia:", pizza); // Log das propriedades de pizza do dia
     const sizes = pizzas
       .filter((p) => p.pizza_type_id === pizza.pizza_type_id)
       .reduce((acc, p) => {
+        console.log("pizza:", p); // Log das propriedades de pizza usadas para calcular sizes
         acc[p.size] = parseFloat(p.price);
         return acc;
       }, {});
+    console.log("Sizes for Pizza do Dia:", sizes); // Log dos tamanhos
 
     const responsePizza = {
       id: pizza.pizza_type_id,
