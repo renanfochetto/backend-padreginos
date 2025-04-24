@@ -30,7 +30,7 @@ server.register(fastifyStatic, {
 });
 
 // Endpoint: Obter todas as pizzas
-server.get("/pizzas", (req, res) => {
+server.get("/api/pizzas", (req, res) => {
   try {
     const responsePizzas = pizzaTypes.map((pizzaType) => {
       const sizes = pizzas
@@ -57,7 +57,7 @@ server.get("/pizzas", (req, res) => {
 });
 
 // Endpoint: Pizza do dia
-server.get("/pizza-of-the-day", (req, res) => {
+server.get("/api/pizza-of-the-day", (req, res) => {
   try {
     const daysSinceEpoch = Math.floor(Date.now() / 86400000);
     const pizzaIndex = daysSinceEpoch % pizzaTypes.length;
@@ -86,7 +86,7 @@ server.get("/pizza-of-the-day", (req, res) => {
 });
 
 // Endpoint: Obter pedidos
-server.get("/orders", (req, res) => {
+server.get("/api/orders", (req, res) => {
   try {
     res.send(orders);
   } catch (error) {
@@ -96,7 +96,7 @@ server.get("/orders", (req, res) => {
 });
 
 // Endpoint: Obter detalhes de um pedido
-server.get("/orders/:orderId", (req, res) => {
+server.get("/api/orders/:orderId", (req, res) => {
   try {
     const orderId = parseInt(req.params.orderId, 10);
     const order = orders.find((o) => o.order_id === orderId);
