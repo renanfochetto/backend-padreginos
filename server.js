@@ -94,7 +94,7 @@ server.get("/api/pizza-of-the-day", (req, res) => {
 });
 
 // Endpoint: Obter pedidos
-server.get("api/orders", (req, res) => {
+server.get("/api/orders", (req, res) => {
   try {
     res.send(orders);
   } catch (error) {
