@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 
 // Registrar o middleware CORS
 server.register(fastifyCors, {
-  origin: ["http://localhost:5174"], // Permitir o frontend local durante o desenvolvimento
+  origin: ["https://padre-gino-react.vercel.app"], // Permitir o frontend local durante o desenvolvimento
   methods: ["GET", "POST"], // Métodos permitidos
 });
 
@@ -46,6 +46,7 @@ server.get("/api/pizzas", (req, res) => {
           acc[pizza.size] = parseFloat(pizza.price); // Converte para número
           return acc;
         }, {});
+      console.log(sizes);
       return {
         id: pizzaType.pizza_type_id,
         name: pizzaType.name,
@@ -93,7 +94,7 @@ server.get("/api/pizza-of-the-day", (req, res) => {
 });
 
 // Endpoint: Obter pedidos
-server.get("/api/orders", (req, res) => {
+server.get("api/orders", (req, res) => {
   try {
     res.send(orders);
   } catch (error) {
