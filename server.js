@@ -2,7 +2,8 @@ import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import path from "path";
 import { fileURLToPath } from "url";
-import Database from 'better-sqlite3';  // Mudança aqui!
+import sqlite3 from "sqlite3"; // Substituímos better-sqlite3 por sqlite3
+import fs from "fs"; // Para verificar se o banco existe
 
 const server = fastify({
   logger: {
@@ -17,82 +18,134 @@ const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// A mudança está aqui
-const db = new Database('./pizza.sqlite', { verbose: console.log }); // Mudança para usar o better-sqlite3
+// Verificar se o arquivo do banco de dados existe
+const dbPath = path.join(__dirname, "pizza.sqlite");
+if (!fs.existsSync(dbPath)) {
+  console.error("Erro: O arquivo 'pizza.sqlite' não foi encontrado.");
+  process.exit(1);
+}
 
+// Inicializar o banco de dados
+const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
+  if (err) {
+    console.error("Erro ao conectar ao banco de dados SQLite:", err.message);
+    process.exit(1);
+  } else {
+    console.log("Conectado ao banco de dados SQLite.");
+  }
+});
+
+// Registrar arquivos estáticos
 server.register(fastifyStatic, {
   root: path.join(__dirname, "public"),
   prefix: "/public/",
 });
 
-// Resto do código permanece igual, já que as APIs de consulta são similares
-server.get("/api/pizzas", async function getPizzas(req, res) {
-  const pizzas = db.prepare(
-    "SELECT pizza_type_id, name, category, ingredients as description FROM pizza_types"
-  ).all();
-  const pizzaSizes = db.prepare(
-    `SELECT pizza_type_id as id, size, price FROM pizzas`
-  ).all();
+// Endpoint: Obter todas as pizzas
+server.get("/api/pizzas", (req, res) => {
+  const pizzasQuery = `
+    SELECT pizza_type_id, name, category, ingredients AS description
+    FROM pizza_types
+  `;
+  const pizzaSizesQuery = `
+    SELECT pizza_type_id AS id, size, price
+    FROM pizzas
+  `;
 
-  const responsePizzas = pizzas.map((pizza) => {
-    const sizes = pizzaSizes.reduce((acc, current) => {
-      if (current.id === pizza.pizza_type_id) {
-        acc[current.size] = +current.price;
+  db.all(pizzasQuery, [], (err, pizzas) => {
+    if (err) {
+      console.error("Erro ao buscar pizzas:", err.message);
+      res.status(500).send({ error: "Erro ao buscar as pizzas." });
+      return;
+    }
+
+    db.all(pizzaSizesQuery, [], (err, pizzaSizes) => {
+      if (err) {
+        console.error("Erro ao buscar tamanhos:", err.message);
+        res.status(500).send({ error: "Erro ao buscar tamanhos." });
+        return;
       }
-      return acc;
-    }, {});
-    return {
-      id: pizza.pizza_type_id,
-      name: pizza.name,
-      category: pizza.category,
-      description: pizza.description,
-      image: `/public/pizzas/${pizza.pizza_type_id}.webp`,
-      sizes,
-    };
+
+      const responsePizzas = pizzas.map((pizza) => {
+        const sizes = pizzaSizes.reduce((acc, current) => {
+          if (current.id === pizza.pizza_type_id) {
+            acc[current.size] = +current.price;
+          }
+          return acc;
+        }, {});
+        return {
+          id: pizza.pizza_type_id,
+          name: pizza.name,
+          category: pizza.category,
+          description: pizza.description,
+          image: `/public/pizzas/${pizza.pizza_type_id}.webp`,
+          sizes,
+        };
+      });
+
+      res.send(responsePizzas);
+    });
   });
-
-  res.send(responsePizzas);
 });
 
-// O restante dos endpoints continuam com a mesma estrutura
-server.get("/api/pizza-of-the-day", async function getPizzaOfTheDay(req, res) {
-  const pizzas = db.prepare(
-    `SELECT pizza_type_id as id, name, category, ingredients as description FROM pizza_types`
-  ).all();
+// Endpoint: Pizza do dia
+server.get("/api/pizza-of-the-day", (req, res) => {
+  const pizzasQuery = `
+    SELECT pizza_type_id AS id, name, category, ingredients AS description
+    FROM pizza_types
+  `;
 
-  const daysSinceEpoch = Math.floor(Date.now() / 86400000);
-  const pizzaIndex = daysSinceEpoch % pizzas.length;
-  const pizza = pizzas[pizzaIndex];
+  db.all(pizzasQuery, [], (err, pizzas) => {
+    if (err) {
+      console.error("Erro ao buscar pizzas:", err.message);
+      res.status(500).send({ error: "Erro ao buscar a pizza do dia." });
+      return;
+    }
 
-  const sizes = db.prepare(
-    `SELECT size, price FROM pizzas WHERE pizza_type_id = ?`
-  ).all(pizza.id);
+    const daysSinceEpoch = Math.floor(Date.now() / 86400000);
+    const pizzaIndex = daysSinceEpoch % pizzas.length;
+    const pizza = pizzas[pizzaIndex];
 
-  const sizeObj = sizes.reduce((acc, current) => {
-    acc[current.size] = +current.price;
-    return acc;
-  }, {});
+    const sizesQuery = `
+      SELECT size, price
+      FROM pizzas
+      WHERE pizza_type_id = ?
+    `;
 
-  const responsePizza = {
-    id: pizza.id,
-    name: pizza.name,
-    category: pizza.category,
-    description: pizza.description,
-    image: `/public/pizzas/${pizza.id}.webp`,
-    sizes: sizeObj,
-  };
+    db.all(sizesQuery, [pizza.id], (err, sizes) => {
+      if (err) {
+        console.error("Erro ao buscar tamanhos da pizza do dia:", err.message);
+        res.status(500).send({ error: "Erro ao buscar tamanhos da pizza do dia." });
+        return;
+      }
 
-  res.send(responsePizza);
+      const sizeObj = sizes.reduce((acc, current) => {
+        acc[current.size] = +current.price;
+        return acc;
+      }, {});
+
+      const responsePizza = {
+        id: pizza.id,
+        name: pizza.name,
+        category: pizza.category,
+        description: pizza.description,
+        image: `/public/pizzas/${pizza.id}.webp`,
+        sizes: sizeObj,
+      };
+
+      res.send(responsePizza);
+    });
+  });
 });
 
-// Restante dos endpoints segue a mesma lógica de substituição
-
+// Inicializar o servidor
 const start = async () => {
   try {
     await server.listen({ port: PORT });
-    console.log(`Server listening on port ${PORT}`);
+    console.log(`✅ Servidor rodando em http://localhost:${PORT}`);
+    console.log(`📂 Imagens disponíveis em http://localhost:${PORT}/public/`);
   } catch (err) {
-    console.error(err);
+    console.error("Erro ao iniciar o servidor:", err);
     process.exit(1);
   }
 };
