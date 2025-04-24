@@ -1,5 +1,6 @@
 import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
+import fastifyCors from "@fastify/cors"; // Importação do plugin de CORS
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs"; // Para carregar os arquivos JSON
@@ -16,6 +17,12 @@ const PORT = process.env.PORT || 8080;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Registrar o middleware CORS
+server.register(fastifyCors, {
+  origin: ["http://localhost:5174"], // Permitir o frontend local durante o desenvolvimento
+  methods: ["GET", "POST"], // Métodos permitidos
+});
 
 // Carregar os dados dos arquivos JSON
 const pizzaTypes = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "pizza_types.json")));
