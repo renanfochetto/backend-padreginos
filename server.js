@@ -36,7 +36,7 @@ server.get("/api/pizzas", (req, res) => {
       const sizes = pizzas
         .filter((pizza) => pizza.pizza_type_id === pizzaType.pizza_type_id)
         .reduce((acc, pizza) => {
-          acc[pizza.size] = parseFloat(pizza.price);
+          acc[pizza.size] = parseFloat(pizza.price); // Converte para número
           return acc;
         }, {});
       return {
@@ -95,6 +95,26 @@ server.get("/api/orders", (req, res) => {
   }
 });
 
+// Endpoint: Obter detalhes dos pedidos
+server.get("/api/order_details", (req, res) => {
+  try {
+    res.send(orderDetails);
+  } catch (error) {
+    req.log.error(error);
+    res.status(500).send({ error: "Erro ao buscar os detalhes dos pedidos." });
+  }
+});
+
+// Endpoint: Obter todos os tipos de pizza
+server.get("/api/pizza_types", (req, res) => {
+  try {
+    res.send(pizzaTypes);
+  } catch (error) {
+    req.log.error(error);
+    res.status(500).send({ error: "Erro ao buscar os tipos de pizza." });
+  }
+});
+
 // Endpoint: Obter detalhes de um pedido
 server.get("/api/orders/:orderId", (req, res) => {
   try {
@@ -132,7 +152,7 @@ server.get("/api/orders/:orderId", (req, res) => {
 // Inicializar o servidor
 const start = async () => {
   try {
-    await server.listen({ port: PORT, host: '0.0.0.0' }); // <- Isso é crucial para a Railway
+    await server.listen({ port: PORT, host: '0.0.0.0' });
     console.log(`✅ Servidor rodando em http://localhost:${PORT}`);
     console.log(`📂 Imagens disponíveis em http://localhost:${PORT}/public/`);
   } catch (err) {
